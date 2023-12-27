@@ -14,6 +14,7 @@ Vue.prototype.$token = localStorage.getItem('token');
 Vue.prototype.$ganancia = 30;
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vue-search-select/dist/VueSearchSelect.css'
 
 Vue.use(Notifications)
 Vue.use(VuePaginate)

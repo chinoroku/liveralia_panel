@@ -431,8 +431,8 @@
   export default {
     name: 'EditProductoApp',
     components: {
-      Sidebar,
-      TopNav
+        Sidebar,
+        TopNav
     },
     data() {
         return {
@@ -443,7 +443,7 @@
                 descuento: false,
                 portada: undefined,
             },
-            portada : undefined,
+            portada: undefined,
             variedad: {},
             sku: '',
             variedades : [],
@@ -452,123 +452,123 @@
         }
     },
     methods: {
-        init_data(){
-            axios.get(this.$url+'/obtener_producto_admin/'+this.$route.params.id,{
-                headers:{
-                     'Content-Type': 'application/json',
-                      'Authorization': this.$store.state.token,
+        init_data() {
+            axios.get(this.$url + '/obtener_producto_admin/' + this.$route.params.id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': this.$store.state.token,
                 }
-            }).then((result)=>{
+            }).then((result) => {
                 console.log(result);
                 this.producto = result.data;
-                this.str_image = this.$url+'/obtener_portada_producto/'+this.producto.portada;
+                this.str_image = this.$url + '/obtener_portada_producto/' + this.producto.portada;
             });
         },
-        uploadImage($event){
-  
-              var image;
-  
-              if($event.target.files.length >= 1){
-                  image = $event.target.files[0];
-              }
-  
-              if(image.size <= 100000){
-                 if(image.type == 'image/jpeg'||image.type == 'image/png'||image.type == 'image/webp'||image.type == 'image/jpg'){
-                     this.str_image = URL.createObjectURL(image);
-                      this.portada = image;
-                      this.producto.portada = this.portada;
-                 }else{
-                     this.$notify({
-                          group: 'foo',
-                          title: 'ERROR',
-                          text: 'El recurso debe ser imagen.',
-                          type: 'error'
-                      });
-                      this.portada = undefined;
-                 }
-              }else{
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'La imagen debe pesar menos de 1MB',
-                      type: 'error'
-                  });
-                  this.portada = undefined;
-              }
-            
+        uploadImage($event) {
+
+            var image;
+
+            if ($event.target.files.length >= 1) {
+                image = $event.target.files[0];
+            }
+
+            if (image.size <= 100000) {
+                if (image.type == 'image/jpeg' || image.type == 'image/png' || image.type == 'image/webp' || image.type == 'image/jpg') {
+                    this.str_image = URL.createObjectURL(image);
+                    this.portada = image;
+                    this.producto.portada = this.portada;
+                } else {
+                    this.$notify({
+                        group: 'foo',
+                        title: 'ERROR',
+                        text: 'El recurso debe ser imagen.',
+                        type: 'error'
+                    });
+                    this.portada = undefined;
+                }
+            } else {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'La imagen debe pesar menos de 1MB',
+                    type: 'error'
+                });
+                this.portada = undefined;
+            }
+
         },
-        validar(){
-              if(!this.producto.titulo){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Ingrese el titulo del producto',
-                      type: 'error'
-                  });
-              }else if(!this.producto.categoria){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Seleccione la categoria del producto',
-                      type: 'error'
-                  });
-              }else if(!this.producto.subcategoria){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Seleccione la subcategoria del producto',
-                      type: 'error'
-                  });
-              }else if(!this.producto.extracto){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Ingrese el extracto del producto',
-                      type: 'error'
-                  });
-              }else if(!this.producto.str_variedad){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Ingrese el variedad del producto',
-                      type: 'error'
-                  });
-              }else if(this.producto.portada == undefined){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Selecciona una imagen de portada',
-                      type: 'error'
-                  });
-              }else{
-                  this.actualizar();
-              }
-            
+        validar() {
+            if (!this.producto.titulo) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese el titulo del producto',
+                    type: 'error'
+                });
+            } else if (!this.producto.categoria) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Seleccione la categoria del producto',
+                    type: 'error'
+                });
+            } else if (!this.producto.subcategoria) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Seleccione la subcategoria del producto',
+                    type: 'error'
+                });
+            } else if (!this.producto.extracto) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese el extracto del producto',
+                    type: 'error'
+                });
+            } else if (!this.producto.str_variedad) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese el variedad del producto',
+                    type: 'error'
+                });
+            } else if (this.producto.portada == undefined) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Selecciona una imagen de portada',
+                    type: 'error'
+                });
+            } else {
+                this.actualizar();
+            }
+
         },
-  
-        actualizar(){
+
+        actualizar() {
             var data;
             var content = '';
-            if(this.portada != undefined){
-              content = 'multipart/form-data';
-              data = new FormData();
-              fm.append('titulo',this.producto.titulo);
-              fm.append('categoria',this.producto.categoria);
-               fm.append('subcategoria',this.producto.subcategoria);
-              fm.append('extracto',this.producto.extracto);
-              fm.append('estado',this.producto.estado);
-              fm.append('str_variedad',this.producto.str_variedad);
-              fm.append('descuento',this.producto.descuento);
-              fm.append('portada',this.producto.portada); //IMAGEN
-            }else{
+            if (this.portada != undefined) {
+                content = 'multipart/form-data';
+                data = new FormData();
+                fm.append('titulo', this.producto.titulo);
+                fm.append('categoria', this.producto.categoria);
+                fm.append('subcategoria', this.producto.subcategoria);
+                fm.append('extracto', this.producto.extracto);
+                fm.append('estado', this.producto.estado);
+                fm.append('str_variedad', this.producto.str_variedad);
+                fm.append('descuento', this.producto.descuento);
+                fm.append('portada', this.producto.portada); //IMAGEN
+            } else {
                 content = 'application/json';
                 data = this.producto;
             }
-  
-            axios.put(this.$url+'/actualizar_producto_admin/'+this.$route.params.id,data,{
+
+            axios.put(this.$url + '/actualizar_producto_admin/' + this.$route.params.id, data, {
                 headers: {
                     'Content-Type': content,
-                    'Authorization' : this.$store.state.token
+                    'Authorization': this.$store.state.token
                 }
             }).then((result) => {
                 if (result.data.message) {
@@ -588,7 +588,7 @@
 
                     this.$router.push({ name: 'producto-index' });
                 }
-                
+
             })
 
         },
@@ -702,6 +702,6 @@
         this.init_variedades();
         this.init_categorias();
     },
-  }
-  </script>
+}
+</script>
   
