@@ -568,119 +568,111 @@
                     'Content-Type': content,
                     'Authorization' : this.$store.state.token
                 }
-            }).then((result)=>{
-                
-                if(result.data.message){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: result.data.message,
-                      type: 'error'
-                  });
-                }else{
+            }).then((result) => {
+                if (result.data.message) {
                     this.$notify({
-                      group: 'foo',
-                      title: 'SUCCESS',
-                      text: 'Se actualizó el producto.',
-                      type: 'success'
-                  });
+                        group: 'foo',
+                        title: 'ERROR',
+                        text: result.data.message,
+                        type: 'error'
+                    });
+                } else {
+                    this.$notify({
+                        group: 'foo',
+                        title: 'SUCCESS',
+                        text: 'Se actualizó correctamente el producto.',
+                        type: 'success'
+                    });
+
+                    this.$router.push({ name: 'producto-index' });
                 }
                 
             })
-  
-  
+
         },
-  
-        validar_variedad(){
-            if(!this.variedad.proveedor){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Ingrese el proveedor del producto',
-                      type: 'error'
-                  });
-            }else if(!this.variedad.variedad){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: 'Ingrese la variedad del producto',
-                      type: 'error'
-                  });
-            }else{
+        validar_variedad() {
+            if (!this.variedad.proveedor) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese el proveedor del producto.',
+                    type: 'error'
+                });
+            } else if (!this.variedad.variedad) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese la variedad del producto.',
+                    type: 'error'
+                });
+            } else {
                 this.variedad.producto = this.$route.params.id;
-                this.variedad.sku =  this.generar_sku();
-  
+                this.variedad.sku = this.generar_sku();
                 this.registro_variedad();
             }
-           
         },
-  
-        registro_variedad(){
-            axios.post(this.$url+'/registro_variedad_producto',this.variedad,{
-                headers:{
-                     'Content-Type': 'application/json',
-                    'Authorization' : this.$store.state.token
+        registro_variedad() {
+            axios.post(this.$url + '/registro_variedad_producto', this.variedad, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': this.$store.state.token
                 }
-            }).then((result)=>{
+            }).then((result) => {
                 this.variedad = {};
                 this.$notify({
-                      group: 'foo',
-                      title: 'SUCCESS',
-                      text: 'Se agrego la nueva variedad.',
-                      type: 'success'
-                  });
-                  this.init_variedades();
+                    group: 'foo',
+                    title: 'SUCCESS',
+                    text: 'Se agregó la nueva variedad.',
+                    type: 'success'
+                });
+                this.init_variedades();
             });
-        },  
-        generar_sku(){
-          let sku = this.producto.titulo.substr(0,3)+''+this.producto.str_variedad.substr(0,3)+''+this.variedad.variedad.substr(0,3)+''+this.variedad.proveedor.substr(0,3);
-          return sku.toUpperCase();
-          //XIACOLROJREA
         },
-  
-        init_variedades(){
-            axios.get(this.$url+'/obtener_variedades_producto/'+this.$route.params.id,{
-                headers:{
-                     'Content-Type': 'application/json',
-                    'Authorization' : this.$store.state.token
+        generar_sku() {
+            let sku = this.producto.titulo.substr(0, 3) + '' + this.producto.str_variedad.substr(0, 3) + '' + this.variedad.variedad.substr(0, 3) + '' + this.variedad.proveedor.substr(0, 3);
+            return sku.toUpperCase();
+        },
+
+        init_variedades() {
+            axios.get(this.$url + '/obtener_variedad_producto/' + this.$route.params.id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': this.$store.state.token
                 }
-            }).then((result)=>{
+            }).then((result) => {
                 this.variedades = result.data;
-                /* this.variedad = {};
+                /*this.variedad = {};
                 this.$notify({
-                      group: 'foo',
-                      title: 'SUCCESS',
-                      text: 'Se agrego la nueva variedad.',
-                      type: 'success'
-                  }); */
+                        group: 'foo',
+                        title: 'SUCCESS',
+                        text: 'Se agregó la nueva variedad.',
+                        type: 'success'
+                    }); */
             });
         },
-        eliminar(id){
-          axios.delete(this.$url+'/eliminar_variedad_producto/'+id,{
-                headers:{
-                     'Content-Type': 'application/json',
-                    'Authorization' : this.$store.state.token
+        eliminar(id) {
+            axios.delete(this.$url + '/eliminar_variedad_producto/' + id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': this.$store.state.token
                 }
-            }).then((result)=>{
-              
-              if(result.data.message){
-                  this.$notify({
-                      group: 'foo',
-                      title: 'ERROR',
-                      text: result.data.message,
-                      type: 'error'
-                  }); 
-              }else{
-                  this.$notify({
-                      group: 'foo',
-                      title: 'SUCCESS',
-                      text: 'Se eliminó la variedad.',
-                      type: 'success'
-                  });
-  
-                  this.init_variedades();
-              }
-                  
+            }).then((result) => {
+                if (result.data.message) {
+                    this.$notify({
+                        group: 'foo',
+                        title: 'ERROR',
+                        text: result.data.message,
+                        type: 'error'
+                    });
+                } else {
+                    this.$notify({
+                        group: 'foo',
+                        title: 'SUCCESS',
+                        text: 'Se eliminó la variedad.',
+                        type: 'success'
+                    });
+                }
+                this.init_variedades();
             });
         }
     },

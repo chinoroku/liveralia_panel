@@ -124,6 +124,10 @@
                                         <label class="form-label">
                                             Categoria
                                         </label>
+                                        
+                                        <small class="form-text text-muted">
+                                            This contact will be shown to others publicly, so choose it carefully.
+                                        </small>
 
                                         <!-- Form text -->
                                         <small class="form-text text-muted">
@@ -161,6 +165,23 @@
                                     </select>
 
                                 </div>
+
+                                </div>
+                                <div class="col-12 col-md-6">
+
+                                    <!-- Last name -->
+                                    <div class="form-group">
+
+                                        <!-- Label -->
+                                        <label class="form-label">
+                                            Variedad
+                                        </label>
+
+                                        <!-- Input -->
+                                        <input type="text" class="form-control" placeholder="Titulo de la variedad"
+                                            v-model="producto.str_variedad">
+
+                                    </div>
 
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -350,6 +371,7 @@ export default {
                         text: 'El recurso debe ser una imagen.',
                         type: 'error'
                     });
+                    this.portada = undefined;
                 }
             } else {
                 this.$notify({
@@ -358,6 +380,7 @@ export default {
                     text: 'La imagen debe pesar menos de 5MB.',
                     type: 'error'
                 });
+                this.portada = undefined;
             }
         },
 
@@ -397,6 +420,13 @@ export default {
                     text: 'Ingrese el extracto del producto',
                     type: 'error'
                 });
+            }else if (!this.producto.str_variedad) {
+                this.$notify({
+                    group: 'foo',
+                    title: 'ERROR',
+                    text: 'Ingrese la variedad del producto.',
+                    type: 'error'
+                });
             } else if (this.producto.portada == undefined) {
                 this.$notify({
                     group: 'foo',
@@ -418,6 +448,7 @@ export default {
             fm.append('precio', this.producto.precio);
             fm.append('extracto', this.producto.extracto);
             fm.append('estado', this.producto.estado);
+            fm.append('str_variedad', this.producto.str_variedad);
             fm.append('descuento', this.producto.descuento);
             fm.append('portada', this.producto.portada);
 
@@ -427,7 +458,23 @@ export default {
                     'Authorization': this.$store.state.token
                 }
             }).then((result) => {
-                console.log(result);
+                if (result.data.message) {
+                    this.$notify({
+                        group: 'foo',
+                        title: 'ERROR',
+                        text: result.data.message,
+                        type: 'error'
+                    });
+                } else {
+                    this.$notify({
+                        group: 'foo',
+                        title: 'SUCCESS',
+                        text: 'Se registró correctamente el producto.',
+                        type: 'success'
+                    });
+
+                    this.$router.push({name: 'producto-index'});
+                }
             })
 
         }
