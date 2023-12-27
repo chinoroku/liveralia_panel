@@ -20,6 +20,11 @@ const routes = [
   { path: '/producto', name: 'producto-index', component: () => import('@/views/productos/IndexProductoApp.vue'), meta: { requiresAuth: true } },
   { path: '/producto/create', name: 'producto-create', component: () => import('@/views/productos/CreateProductoApp.vue'), meta: { requiresAuth: true } },
   { path: '/producto/edit/:id', name: 'producto-edit', component: () => import('@/views/productos/EditProductoApp.vue'), meta: { requiresAuth: true } },
+
+
+
+
+  { path: '/categorias', name: 'categorias', component: () => import('@/views/categorias/IndexCategoriaApp.vue'), meta: { requiresAuth: true } },
 ]
 
 const router = new VueRouter({

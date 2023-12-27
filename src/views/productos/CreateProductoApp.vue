@@ -125,19 +125,15 @@
                                             Categoria
                                         </label>
                                         
-                                        <small class="form-text text-muted">
-                                            This contact will be shown to others publicly, so choose it carefully.
-                                        </small>
-
                                         <!-- Form text -->
                                         <small class="form-text text-muted">
                                             This contact will be shown to others publicly, so choose it carefully.
                                         </small>
 
                                         <!-- Input -->
-                                        <select name="" class="form-select" v-model="producto.categoria">
+                                        <select name="" class="form-select" v-model="producto.categoria" v-on:change="getSubcategorias($event)">
                                             <option value="" disabled selected>Seleccionar</option>
-                                            <option :value="item" v-for="item in $categorias">{{item}}</option>
+                                            <option :value="item.categoria.titulo" v-for="item in categorias">{{item.categoria.titulo}}</option>
                                         </select>
 
                                     </div>
@@ -161,12 +157,14 @@
                                     <!-- Input -->
                                     <select name="" class="form-select" v-model="producto.subcategoria">
                                         <option value="" disabled selected>Seleccionar</option>
-                                        <option :value="item" v-for="item in subcategorias">{{item}}</option>
+                                        <option :value="item.titulo" v-for="item in subcategorias">{{item.titulo}}</option>
                                     </select>
 
                                 </div>
 
                                 </div>
+
+                                
                                 <div class="col-12 col-md-6">
 
                                     <!-- Last name -->
@@ -346,9 +344,13 @@ export default {
                 portada: undefined,
                 subcategoria:''
             },
-            subcategorias: ['Hombres','Mujeres','Accesorios'],
+            categorias: [],
+            subcategorias: [],
             portada: undefined,
         }
+    },
+    beforeMount(){
+        this.init_categorias();
     },
     methods: {
         uploadImage($event) {
@@ -477,7 +479,24 @@ export default {
                 }
             })
 
-        }
+        },
+        init_categorias(){
+          axios.get(this.$url+'/listar_categorias_admin',{
+              headers:{
+                  'Content-Type': 'application/json',
+                  'Authorization': this.$store.state.token,
+              }
+          }).then((result)=>{
+              this.categorias = result.data;
+          });
+      },
+      getSubcategorias(event){
+            for(var item of this.categorias){
+                if(item.categoria.titulo == event.target.value){
+                    this.subcategorias = item.subcategorias;
+                }
+            }
+      },
     },
 }
 </script>
