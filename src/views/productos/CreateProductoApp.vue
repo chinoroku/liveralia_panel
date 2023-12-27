@@ -124,7 +124,7 @@
                                         <label class="form-label">
                                             Categoria
                                         </label>
-                                        
+
                                         <small class="form-text text-muted">
                                             This contact will be shown to others publicly, so choose it carefully.
                                         </small>
@@ -137,7 +137,7 @@
                                         <!-- Input -->
                                         <select name="" class="form-select" v-model="producto.categoria">
                                             <option value="" disabled selected>Seleccionar</option>
-                                            <option :value="item" v-for="item in $categorias">{{item}}</option>
+                                            <option :value="item" v-for="item in $categorias">{{ item }}</option>
                                         </select>
 
                                     </div>
@@ -145,26 +145,26 @@
                                 </div>
                                 <div class="col-12 col-md-6">
 
-                                <!-- First name -->
-                                <div class="form-group">
+                                    <!-- First name -->
+                                    <div class="form-group">
 
-                                    <!-- Label -->
-                                    <label class="form-label">
-                                        SubCategoria
-                                    </label>
+                                        <!-- Label -->
+                                        <label class="form-label">
+                                            SubCategoria
+                                        </label>
 
-                                    <!-- Form text -->
-                                    <small class="form-text text-muted">
+                                        <!-- Form text -->
+                                        <small class="form-text text-muted">
                                             This contact will be shown to others publicly, so choose it carefully.
                                         </small>
 
-                                    <!-- Input -->
-                                    <select name="" class="form-select" v-model="producto.subcategoria">
-                                        <option value="" disabled selected>Seleccionar</option>
-                                        <option :value="item" v-for="item in subcategorias">{{item}}</option>
-                                    </select>
+                                        <!-- Input -->
+                                        <select name="" class="form-select" v-model="producto.subcategoria">
+                                            <option value="" disabled selected>Seleccionar</option>
+                                            <option :value="item" v-for="item in subcategorias">{{ item }}</option>
+                                        </select>
 
-                                </div>
+                                    </div>
 
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -195,8 +195,7 @@
                                         </label>
 
                                         <!-- Input -->
-                                        <input type="number" class="form-control" placeholder="Precio"
-                                            v-model="producto.precio">
+                                        <input disabled type="number" class="form-control" placeholder="Precio" value="0">
 
                                     </div>
 
@@ -344,9 +343,9 @@ export default {
                 estado: false,
                 descuento: false,
                 portada: undefined,
-                subcategoria:''
+                subcategoria: ''
             },
-            subcategorias: ['Hombres','Mujeres','Accesorios'],
+            subcategorias: ['Hombres', 'Mujeres', 'Accesorios'],
             portada: undefined,
         }
     },
@@ -406,13 +405,6 @@ export default {
                     text: 'Seleccione la subcategoria del producto.',
                     type: 'error'
                 });
-            } else if (!this.producto.precio) {
-                this.$notify({
-                    group: 'foo',
-                    title: 'ERROR',
-                    text: 'Ingrese el precio del producto',
-                    type: 'error'
-                });
             } else if (!this.producto.extracto) {
                 this.$notify({
                     group: 'foo',
@@ -420,7 +412,7 @@ export default {
                     text: 'Ingrese el extracto del producto',
                     type: 'error'
                 });
-            }else if (!this.producto.str_variedad) {
+            } else if (!this.producto.str_variedad) {
                 this.$notify({
                     group: 'foo',
                     title: 'ERROR',
@@ -445,7 +437,6 @@ export default {
             fm.append('titulo', this.producto.titulo);
             fm.append('categoria', this.producto.categoria);
             fm.append('subcategoria', this.producto.subcategoria);
-            fm.append('precio', this.producto.precio);
             fm.append('extracto', this.producto.extracto);
             fm.append('estado', this.producto.estado);
             fm.append('str_variedad', this.producto.str_variedad);
@@ -473,7 +464,7 @@ export default {
                         type: 'success'
                     });
 
-                    this.$router.push({name: 'producto-index'});
+                    this.$router.push({ name: 'producto-index' });
                 }
             })
 
