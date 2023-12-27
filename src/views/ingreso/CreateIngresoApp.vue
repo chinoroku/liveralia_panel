@@ -371,7 +371,7 @@ export default {
 
         init_productos() {
             this.productos = [];
-            axios.get(this.$url + '/listar_activos_productos_admin', {
+            axios.get(this.$url + '/listar_activos_productos_admin_no_activos', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': this.$store.state.token,
