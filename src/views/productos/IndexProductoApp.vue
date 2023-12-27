@@ -213,7 +213,7 @@ export default {
             filtro: '',
             load_data: false,
             currentPage: 1,
-            perPage: 2,
+            perPage: 10,
             get itemsForList(){
                 return this.productos.slice(
                     (this.currentPage - 1) * this.perPage, this.currentPage * this.perPage
