@@ -69,9 +69,9 @@ import { Axios } from 'axios';
                                     <!-- Input -->
                                     <select class="form-select mb-3" v-model="ingreso.proveedor">
                                         <option value="" selected disabled>Seleccionar</option>
-                                        <option>My first option</option>
-                                        <option>Another option</option>
-                                        <option>Third option is here</option>
+                                        <option>Gamarra</option>
+                                        <option>Galeria Centro Lima</option>
+                                        <option>Galeria San Pedro</option>
                                     </select>
 
                                 </div>

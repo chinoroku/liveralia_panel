@@ -24,7 +24,8 @@ const routes = [
 
 
 
-
+  { path: '/ventas', name: 'ventas-index', component: () => import('@/views/ventas/VentasIndexApp.vue'), meta: { requiresAuth: true } },
+  { path: '/ventas/:id', name: 'ventas-detalle', component: () => import('@/views/ventas/VentasDetalleApp.vue'), meta: { requiresAuth: true } },
   { path: '/categorias', name: 'categorias', component: () => import('@/views/categorias/IndexCategoriaApp.vue'), meta: { requiresAuth: true } },
   { path: '/ingreso/create', name: 'ingreso-create', component: () => import('@/views/ingreso/CreateIngresoApp.vue'), meta: { requiresAuth: true } },
 ]

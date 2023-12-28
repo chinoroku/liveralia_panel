@@ -9,7 +9,7 @@
     
         <!-- Brand -->
         <a class="navbar-brand" href="./index.html">
-           <img src="/assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="...">
+           <img src="/assets/img/logo_liveralia.png" class="navbar-brand-img mx-auto" alt="...">
         </a>
     
         <!-- User (xs) -->
@@ -93,6 +93,9 @@
             </li>
             <li class="nav-item">
               <router-link to="/ingreso/create" class="nav-link" active-class="active"><i class="fe fe-folder" ></i>Ingreso</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/ventas" class="nav-link" active-class="active"><i class="fe fe-folder" ></i>Ventas</router-link>
             </li>
           </ul>
      
