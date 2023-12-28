@@ -8,8 +8,8 @@
         </button>
     
         <!-- Brand -->
-        <a class="navbar-brand" href="./index.html">
-           <img src="/assets/img/logo_liveralia.png" class="navbar-brand-img mx-auto" alt="...">
+        <a class="navbar-brand" href="">
+           <img src="/assets/img/logo2_liveralia.png" class="navbar-brand-img mx-auto" alt="..." style="height: 800px">
         </a>
     
         <!-- User (xs) -->
@@ -30,7 +30,7 @@
               <a href="./profile-posts.html" class="dropdown-item">Profile</a>
               <a href="./account-general.html" class="dropdown-item">Settings</a>
               <hr class="dropdown-divider">
-              <a href="./sign-in.html" class="dropdown-item">Logout</a>
+              <router-link to="/" class="dropdown-item">Cerrar sesión</router-link>
             </div>
     
           </div>
@@ -92,7 +92,10 @@
               <router-link to="/producto" class="nav-link" active-class="active"><i class="fe fe-shopping-cart" ></i>Productos</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/ingreso/create" class="nav-link" active-class="active"><i class="fe fe-folder" ></i>Ingreso</router-link>
+              <router-link to="/proveedor" class="nav-link" active-class="active"><i class="fe fe-book" ></i>Proveedor</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/ingreso" class="nav-link" active-class="active"><i class="fe fe-folder" ></i>Ingreso</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/ventas" class="nav-link" active-class="active"><i class="fe fe-folder" ></i>Ventas</router-link>
@@ -106,7 +109,7 @@
             <div class="navbar-user d-none d-md-flex" id="sidebarUser">
     
               <!-- Icon -->
-              <a class="navbar-user-link" data-bs-toggle="offcanvas" href="#sidebarOffcanvasActivity" aria-controls="sidebarOffcanvasActivity">
+              <a class="navbar-user-link" data-bs-toggle="offcanvas" href="" aria-controls="">
                 <span class="icon">
                   <i class="fe fe-bell"></i>
                 </span>
@@ -124,10 +127,10 @@
     
                 <!-- Menu -->
                 <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-                  <a href="./profile-posts.html" class="dropdown-item">Profile</a>
-                  <a href="./account-general.html" class="dropdown-item">Settings</a>
+                  <a href="./profile-posts.html" class="dropdown-item">Perfil</a>
+                  <a href="./account-general.html" class="dropdown-item">Configuración</a>
                   <hr class="dropdown-divider">
-                  <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                  <router-link to="/" class="dropdown-item">Cerrar sesión</router-link>
                 </div>
     
               </div>

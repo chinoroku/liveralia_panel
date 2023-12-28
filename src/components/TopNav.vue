@@ -23,10 +23,10 @@
 
                     <!-- Menu -->
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a href="./profile-posts.html" class="dropdown-item">Profile</a>
-                        <a href="./account-general.html" class="dropdown-item">Settings</a>
+                        <a href="./profile-posts.html" class="dropdown-item">Perfil</a>
+                        <a href="./account-general.html" class="dropdown-item">Configuración</a>
                         <hr class="dropdown-divider">
-                        <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                        <router-link to="/" class="dropdown-item">Cerrar sesión</router-link>
                     </div>
 
                 </div>

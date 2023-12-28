@@ -70,7 +70,7 @@
 
                                             <!-- Text -->
                                             <small class="text-muted">
-                                                PNG or JPG no bigger than 1000px wide and tall.
+                                                Portada no mayor a 5MB.
                                             </small>
 
                                         </div>
@@ -81,7 +81,7 @@
                                     <!-- Button -->
 
                                     <label for="file-upload" class="btn btn-sm btn-primary">
-                                        Upload
+                                        Cargar
                                     </label>
                                     <input style="display:none" id="file-upload" type="file"
                                         v-on:change="uploadImage($event)" />
@@ -105,7 +105,7 @@
 
                                         <!-- Form text -->
                                         <small class="form-text text-muted">
-                                            This contact will be shown to others publicly, so choose it carefully.
+                                            Elegir un título adecuado para el producto.
                                         </small>
 
                                         <!-- Input -->
@@ -127,7 +127,7 @@
                                         
                                         <!-- Form text -->
                                         <small class="form-text text-muted">
-                                            This contact will be shown to others publicly, so choose it carefully.
+                                            Seleccionar una categoria para el producto.
                                         </small>
 
                                         <!-- Input -->
@@ -146,12 +146,12 @@
 
                                         <!-- Label -->
                                         <label class="form-label">
-                                            SubCategoria
+                                            Sub Categoria
                                         </label>
 
                                         <!-- Form text -->
                                         <small class="form-text text-muted">
-                                            This contact will be shown to others publicly, so choose it carefully.
+                                            Seleccionar una sub categoria para el producto.
                                         </small>
 
                                     <!-- Input -->
@@ -206,11 +206,11 @@
 
                                         <!-- Label -->
                                         <label class="form-label">
-                                            Extracto
+                                            Descripción del producto
                                         </label>
 
                                         <!-- Input -->
-                                        <textarea class="form-control" id="" rows="3" placeholder="Extracto"
+                                        <textarea class="form-control" id="" rows="3" placeholder=""
                                             v-model="producto.extracto"></textarea>
 
                                     </div>
@@ -234,8 +234,7 @@
 
                                         <!-- Form text -->
                                         <small class="form-text text-muted">
-                                            Making your profile public means that anyone on the Dashkit network will be able
-                                            to find you.
+                                            No publicar un producto recien creado.
                                         </small>
 
                                         <div class="row">
@@ -273,8 +272,7 @@
 
                                         <!-- Form text -->
                                         <small class="form-text text-muted">
-                                            If you are available for hire outside of the current situation, you can
-                                            encourage others to hire you.
+                                            El descuento solo estaré en base a la necesidad del producto y cliente.
                                         </small>
 
                                         <div class="row">
@@ -303,7 +301,7 @@
                             </div> <!-- / .row -->
 
                             <!-- Divider -->
-                            <hr class="mt-4 mb-5">
+                            <hr class="mt-3 mb-5">
 
                             <!-- Button -->
                             <button class="btn btn-primary" v-on:click="validad()">

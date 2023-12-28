@@ -27,7 +27,19 @@ const routes = [
   { path: '/ventas', name: 'ventas-index', component: () => import('@/views/ventas/VentasIndexApp.vue'), meta: { requiresAuth: true } },
   { path: '/ventas/:id', name: 'ventas-detalle', component: () => import('@/views/ventas/VentasDetalleApp.vue'), meta: { requiresAuth: true } },
   { path: '/categorias', name: 'categorias', component: () => import('@/views/categorias/IndexCategoriaApp.vue'), meta: { requiresAuth: true } },
+
+
   { path: '/ingreso/create', name: 'ingreso-create', component: () => import('@/views/ingreso/CreateIngresoApp.vue'), meta: { requiresAuth: true } },
+  { path: '/ingreso', name: 'ingreso-index', component: () => import('@/views/ingreso/IndexIngresoApp.vue'), meta: { requiresAuth: true } },
+  { path: '/ingreso/:id', name: 'ingreso-detalle', component: () => import('@/views/ingreso/DetalleIngresoApp.vue'), meta: { requiresAuth: true } },
+
+
+
+  //PROVEEDOR
+  { path: '/proveedor', name: 'proveedor-index', component: () => import('@/views/proveedor/ProveedorIndexApp.vue'), meta: { requiresAuth: true } },
+  { path: '/proveedor/create', name: 'proveedor-create', component: () => import('@/views/proveedor/CreateProveedorApp.vue'), meta: { requiresAuth: true } },
+  { path: '/proveedor/edit/:id', name: 'proveedor-edit', component: () => import('@/views/proveedor/EditProveedorApp.vue'), meta: { requiresAuth: true } },
+
 ]
 
 const router = new VueRouter({

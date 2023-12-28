@@ -39,9 +39,9 @@ import { Axios } from 'axios';
                                         <!-- Nav -->
                                         <ul class="nav nav-tabs nav-overflow header-tabs">
                                             <li class="nav-item">
-                                                <a class="nav-link">
+                                                <router-link class="nav-link" to="/ingreso">
                                                     Ingresos
-                                                </a>
+                                                </router-link>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link active">Nuevo ingreso</a>
@@ -67,11 +67,10 @@ import { Axios } from 'axios';
                                         Proveedor encargado del ingreso.
                                     </small>
                                     <!-- Input -->
-                                    <select class="form-select mb-3" v-model="ingreso.proveedor">
-                                        <option value="" selected disabled>Seleccionar</option>
-                                        <option>Gamarra</option>
-                                        <option>Galeria Centro Lima</option>
-                                        <option>Galeria San Pedro</option>
+                                    <select name="" class="form-select" v-model="ingreso.proveedor">
+                                        <option value="" disabled selected>Seleccionar</option>
+                                        <option :value="item.proveedor.nombre" v-for="item in proveedores">
+                                            {{ item.proveedor.nombre }}</option>
                                     </select>
 
                                 </div>
@@ -329,6 +328,8 @@ export default {
             producto: {},
             productos: [],
             variedades: [],
+            proveedor: {},
+            proveedores: [],
             total: 0
         }
     },
@@ -367,6 +368,16 @@ export default {
                 this.comprobante = undefined;
             }
             console.log(this.comprobante);
+        },
+        init_proveedores() {
+            axios.get(this.$url + '/listar_activos_proveedores_admin', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': this.$store.state.token,
+                }
+            }).then((result) => {
+                this.proveedores = result.data;
+            });
         },
 
         init_productos() {
@@ -517,6 +528,7 @@ export default {
     },
     beforeMount() {
         this.init_productos();
+        this.init_proveedores();
     },
     components: {
         Sidebar,

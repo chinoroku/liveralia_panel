@@ -125,7 +125,7 @@ export default {
             if(result.data.token) {
                 this.$store.dispatch('saveToken',result.data.token);
 
-                this.$router.push({name: 'dashboard'});
+                this.$router.push({name: 'colaborador-index'});
             }
         }).catch((error)=>{
             console.log(error);

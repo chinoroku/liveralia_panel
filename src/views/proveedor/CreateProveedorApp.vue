@@ -17,12 +17,12 @@
 
                                         <!-- Pretitle -->
                                         <h6 class="header-pretitle">
-                                            Colaboradores
+                                            Proveedores
                                         </h6>
 
                                         <!-- Title -->
                                         <h1 class="header-title">
-                                            Nuevo colaborador
+                                            Nuevo proveedor
                                         </h1>
 
                                     </div>
@@ -33,12 +33,12 @@
                                         <!-- Nav -->
                                         <ul class="nav nav-tabs nav-overflow header-tabs">
                                             <li class="nav-item">
-                                                <router-link to="/colaborador" class="nav-link">Todos los
-                                                    colaboradores</router-link>
+                                                <router-link to="/proveedor" class="nav-link">Todos los
+                                                    proveedores</router-link>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link active">
-                                                    Nuevo colaborador
+                                                    Nuevo proveedor
                                                 </a>
 
                                             </li>
@@ -61,12 +61,12 @@
 
                                     <!-- Label -->
                                     <label class="form-label">
-                                        Nombre(s)
+                                        Nombre
                                     </label>
 
                                     <!-- Input -->
-                                    <input type="text" class="form-control" v-model="colaborador.nombres"
-                                        placeholder="Nombres completos">
+                                    <input type="text" class="form-control" v-model="proveedor.nombre"
+                                        placeholder="Nombre proveedor">
 
                                 </div>
 
@@ -78,56 +78,35 @@
 
                                     <!-- Label -->
                                     <label class="form-label">
-                                        Apellidos
+                                        Correo electrónico
                                     </label>
 
                                     <!-- Input -->
-                                    <input type="text" class="form-control" v-model="colaborador.apellidos"
-                                        placeholder="Apellidos completos">
+                                    <input type="text" class="form-control" v-model="proveedor.email"
+                                        placeholder="Correo electrónico">
 
                                 </div>
 
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 col-md-6">
 
                                 <!-- Email address -->
                                 <div class="form-group">
 
                                     <!-- Label -->
                                     <label class="mb-1">
-                                        Correo electrónico
+                                        Celular
                                     </label>
 
                                     <!-- Form text -->
                                     <small class="form-text text-muted">
-                                        Poner un email válido y que use actualmente.
+                                        Poner un celular válido para las comunicaciones respectivas.
                                     </small>
 
                                     <!-- Input -->
-                                    <input type="email" class="form-control" v-model="colaborador.email"
-                                        placeholder="Correo electrónico">
+                                    <input type="celular" class="form-control" v-model="proveedor.celular"
+                                        placeholder="Celular">
 
-                                </div>
-
-                            </div>
-
-                            <div class="col-12 col-md-6">
-
-                                <!-- Birthday -->
-                                <div class="form-group">
-
-                                    <!-- Label -->
-                                    <label class="form-label">
-                                        Cargo
-                                    </label>
-
-                                    <!-- Input -->
-                                    <select name="" class="form-select" v-model="colaborador.rol">
-                                        <option value="" disabled selected>Seleccionar</option>
-                                        <option value="Administrador">Administrador</option>
-                                        <option value="Vendedor">Vendedor</option>
-                                        <option value="Inventariado">Almacenero</option>
-                                    </select>
                                 </div>
 
                             </div>
@@ -162,11 +141,11 @@ import TopNav from '@/components/TopNav.vue';
 import axios from 'axios';
 
 export default {
-    name: 'CreateColaboradorApp',
+    name: 'CreateProveedorApp',
 
     data() {
         return {
-            colaborador: {
+            proveedor: {
                 rol: ''
             },
         }
@@ -174,41 +153,34 @@ export default {
 
     methods: {
         validar() {
-            if (!this.colaborador.nombres) {
+            if (!this.proveedor.nombre) {
                 this.$notify({
                     group: 'foo',
                     title: 'ERROR',
                     text: 'Ingrese los nombres',
                     type: 'error'
                 });
-            } else if (!this.colaborador.apellidos) {
+            } else if (!this.proveedor.email) {
                 this.$notify({
                     group: 'foo',
                     title: 'ERROR',
-                    text: 'Ingrese los apellidos',
+                    text: 'Ingrese el email',
                     type: 'error'
                 });
-            } else if (!this.colaborador.email) {
+            } else if (!this.proveedor.celular) {
                 this.$notify({
                     group: 'foo',
                     title: 'ERROR',
-                    text: 'Ingrese los email',
-                    type: 'error'
-                });
-            } else if (!this.colaborador.rol) {
-                this.$notify({
-                    group: 'foo',
-                    title: 'ERROR',
-                    text: 'Ingrese los cargo',
+                    text: 'Ingrese el número de celular',
                     type: 'error'
                 });
             } else {
-                this.crear_colaborador();
+                this.crear_proveedor();
             }
         },
 
-        crear_colaborador() {
-            axios.post(this.$url + '/registro_usuario_admin', this.colaborador, {
+        crear_proveedor() {
+            axios.post(this.$url + '/registro_proveedor_admin/', this.proveedor, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': this.$store.state.token
@@ -226,11 +198,11 @@ export default {
                     this.$notify({
                         group: 'foo',
                         title: 'SUCCESS',
-                        text: 'Se registró correctamente al nuevo colaborador.',
+                        text: 'Se registró correctamente al nuevo proveedor.',
                         type: 'success'
                     });
 
-                    this.$router.push({name: 'colaborador-index'});
+                    this.$router.push({name: 'proveedor-index'});
                 }
             }).catch((error) => {
                 console.log(error);
