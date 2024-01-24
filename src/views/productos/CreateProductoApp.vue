@@ -326,7 +326,7 @@ import TopNav from '@/components/TopNav.vue';
 import axios from 'axios';
 
 export default {
-    name: 'CreateProductoApp',
+    name: 'CreateDevolucionApp',
     components: {
         Sidebar,
         TopNav

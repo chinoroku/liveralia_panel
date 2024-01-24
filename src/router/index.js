@@ -40,6 +40,11 @@ const routes = [
   { path: '/proveedor/create', name: 'proveedor-create', component: () => import('@/views/proveedor/CreateProveedorApp.vue'), meta: { requiresAuth: true } },
   { path: '/proveedor/edit/:id', name: 'proveedor-edit', component: () => import('@/views/proveedor/EditProveedorApp.vue'), meta: { requiresAuth: true } },
 
+  //Devolucion
+  { path: '/devolucion', name: 'devolucion-index', component: () => import('@/views/Devolucion/IndexDevolucionApp.vue'), meta: { requiresAuth: true } },
+  { path: '/devolucion/create', name: 'devolucion-create', component: () => import('@/views/Devolucion/DevolucionApp.vue'), meta: { requiresAuth: true } },
+
+
 ]
 
 const router = new VueRouter({

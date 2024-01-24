@@ -11,7 +11,7 @@
 
         <!-- Heading -->
         <h1 class="display-4 mb-3">
-          Página no encontrada 😭
+          Página no encontrada 
         </h1>
 
         <!-- Subheading -->

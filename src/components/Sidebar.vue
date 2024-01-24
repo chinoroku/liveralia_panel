@@ -100,6 +100,9 @@
             <li class="nav-item">
               <router-link to="/ventas" class="nav-link" active-class="active"><i class="fe fe-folder" ></i>Ventas</router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/devolucion" class="nav-link" active-class="active"><i class="fe fe-folder" ></i>Devolucion</router-link>
+            </li>
           </ul>
      
           <!-- Push content down -->
